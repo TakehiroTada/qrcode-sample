@@ -1,0 +1,12 @@
+{
+  "name": "create-qrcode",
+  "version": "1.0.0",
+  "description": "QRコードを生成してS3にアップロード",
+  "main": "index.js",
+  "author": "TakehiroTada",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "jquery-qrcode": "^1.0.0"
+  }
+}
