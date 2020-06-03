@@ -23,9 +23,13 @@ provider:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
 
 functions:
-  hello:
-    handler: handler.hello
+  qr:
+    handler: handler.getQRCode
     events:
       - http:
           method: get
-          path: hello
+          path: qr
+          request:
+            parameters:
+              querystrings:
+                number: true
