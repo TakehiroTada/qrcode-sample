@@ -1,2 +1,11 @@
-function.zip
+# package directories
 node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# Webpack directories
+.webpack
+
+function.zip

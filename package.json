@@ -1,12 +1,28 @@
 {
   "name": "create-qrcode",
   "version": "1.0.0",
-  "description": "QRコードを生成してS3にアップロード",
-  "main": "index.js",
-  "author": "TakehiroTada",
-  "license": "MIT",
-  "dependencies": {
-    "qrcode": "^1.4.4"
+  "description": "create-qrcode",
+  "main": "handler.js",
+  "scripts": {
+    "dev": "sls offline start",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module"
+  "dependencies": {
+    "qrcode": "^1.4.4",
+    "serverless": "^1.72.0",
+    "source-map-support": "^0.5.10"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.17",
+    "@types/node": "^10.12.18",
+    "fork-ts-checker-webpack-plugin": "^3.0.1",
+    "serverless-offline": "^6.3.0",
+    "serverless-webpack": "^5.2.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "author": "TakehiroTada",
+  "license": "MIT"
 }
