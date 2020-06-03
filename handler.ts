@@ -9,14 +9,12 @@ export const getQRCode: APIGatewayProxyHandler = async (event, _context) => {
   const number: string = event.queryStringParameters.number; //QRコードに入れる数字
   const img = await generateQR(number);
 
-  await s3Upload(img);
+  const url = await s3Upload(img);
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message:
-          "Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!",
-        input: event,
+        number: url,
       },
       null,
       2
@@ -73,10 +71,19 @@ const s3Upload = async (encodedData) => {
   await s3
     .putObject(params)
     .promise()
-    .then(() => {
+    .then((e, c) => {
       console.log("Success!!!");
     })
     .catch((err) => {
       console.log(`Error: ${err}`);
     });
+
+  const signedParams = {
+    Bucket: process.env.AWS_BUCKET,
+    Key: `${filename}.png`,
+    Expires: 60,
+  }; // Expires:有効期限(秒)
+  const signedUrl = await s3.getSignedUrl("getObject", signedParams);
+
+  return signedUrl;
 };
