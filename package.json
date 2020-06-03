@@ -6,7 +6,7 @@
   "author": "TakehiroTada",
   "license": "MIT",
   "dependencies": {
-    "jquery": "^3.5.1",
-    "jquery-qrcode": "^1.0.0"
-  }
+    "qrcode": "^1.4.4"
+  },
+  "type": "module"
 }
