@@ -31,8 +31,12 @@ const awsSettings = () => {
 };
 
 const generateQR = async (text) => {
+  const options = {
+    width: 500,
+    height: 500,
+  };
   try {
-    return QRCode.toDataURL(text);
+    return QRCode.toDataURL(text, options);
   } catch (err) {
     console.error(err);
   }
