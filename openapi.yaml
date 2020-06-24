@@ -1,0 +1,183 @@
+swagger: "2.0"
+info:
+  description: "kinds-polaris"
+  version: "1.0.0"
+  title: "Kinds Polaris"
+basePath: "/"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /reservations/add:
+    post:
+      tags:
+        - "reservations"
+      summary: "受付予約登録"
+      description: "受付予約を登録する"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "title"
+          description: "ああ"
+          required: true
+          schema:
+            $ref: '#/definitions/Reservation'
+      responses:
+        "201":
+          description: "登録成功"
+          schema:
+            type: object
+            properties:
+              status:
+                type: "string"
+                example: "Create Reservation Success"
+              reservations:
+                $ref: '#/definitions/Reservation'
+  # /reservations/edit:
+  #   put:
+  #     tags:
+  #     - "reservations"
+  #     summary: "受付予約編集"
+  #     description: "受付予約を編集する"
+  #     consumes:
+  #     - "application/json"
+  #     - "application/xml"
+  #     produces:
+  #     - "application/xml"
+  #     - "application/json"
+  #     # parameters:
+  #     # - in: "body"
+  #     #   name: "body"
+  #     #   description: "ああ"
+  #     #   required: true
+  #     responses:
+  #       "200":
+  #         description: "編集成功"
+  # /reservations/delete:
+  #   delete:
+  #     tags:
+  #     - "reservations"
+  #     summary: "受付予約削除"
+  #     description: "受付予約を削除する"
+  #     consumes:
+  #     - "application/json"
+  #     - "application/xml"
+  #     produces:
+  #     - "application/xml"
+  #     - "application/json"
+  #     # parameters:
+  #     # - in: "body"
+  #     #   name: "body"
+  #     #   description: "ああ"
+  #     #   required: true
+  #     responses:
+  #       "200":
+  #         description: "編集成功"
+  # /reservations/detail:
+  #   get:
+  #     tags:
+  #     - "reservations"
+  #     summary: "受付予約詳細取得"
+  #     description: "受付予約詳細を取得する"
+  #     consumes:
+  #     - "application/json"
+  #     - "application/xml"
+  #     produces:
+  #     - "application/xml"
+  #     - "application/json"
+  #     # parameters:
+  #     # - in: "body"
+  #     #   name: "body"
+  #     #   description: "ああ"
+  #     #   required: true
+  #     responses:
+  #       "200":
+  #         description: "編集成功"
+  # /reservations/list:
+  #   get:
+  #     tags:
+  #     - "reservations"
+  #     summary: "予約受付一覧"
+  #     description: "受付予約一覧を取得する"
+  #     consumes:
+  #     - "application/json"
+  #     - "application/xml"
+  #     produces:
+  #     - "application/xml"
+  #     - "application/json"
+  #     # parameters:
+  #     # - in: "body"
+  #     #   name: "body"
+  #     #   description: "ああ"
+  #     #   required: true
+  #     responses:
+  #       "200":
+  #         description: "編集成功"
+  # /checkin:
+  #   post:
+  #     tags:
+  #     - "checkin"
+  #     summary: "受付処理"
+  #     description: "QRを読み込んだあとの処理。Slack通知を送るまで"
+  #     consumes:
+  #     - "application/json"
+  #     - "application/xml"
+  #     produces:
+  #     - "application/xml"
+  #     - "application/json"
+  #     # parameters:
+  #     # - in: "body"
+  #     #   name: "body"
+  #     #   description: "ああ"
+  #     #   required: true
+  #     responses:
+  #       "200":
+  #         description: "編集成功"
+  # /create-qr:
+  #   post:
+  #     tags:
+  #     - "create-qr"
+  #     summary: "QR生成"
+  #     description: "受付番号を記録したQRコードを生成し、S3へ保存する"
+  #     consumes:
+  #     - "application/json"
+  #     - "application/xml"
+  #     produces:
+  #     - "application/xml"
+  #     - "application/json"
+  #     # parameters:
+  #     # - in: "body"
+  #     #   name: "body"
+  #     #   description: "ああ"
+  #     #   required: true
+  #     responses:
+  #       "200":
+  #         description: "編集成功"
+definitions:
+  Reservation:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      visitor:
+        type: "string"
+      start_date:
+        type: "string"
+      end_date:
+        type: "string"
+      room_id:
+        type: "integer"
+        format: "int64"
+      created_staff_id:
+        type: "integer"
+        format: "int64"
+      created_at:
+        type: "string"
+    xml:
+      name: "Reservation"
